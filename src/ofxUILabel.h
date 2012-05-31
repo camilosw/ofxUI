@@ -34,7 +34,7 @@ public:
     
     ofxUILabel(string _name, string _label = "", float w = 0, float h = 0, float x = 0, float y = 0, int _size = OFX_UI_FONT_MEDIUM)
     {
-        init(_name, _label, w, h, x, y);
+        init(_name, _label, w, h, x, y, _size);
     }
     
     ofxUILabel* init(string _name, string _label = "", float w = 0, float h = 0, float x = 0, float y = 0, int _size = OFX_UI_FONT_MEDIUM)

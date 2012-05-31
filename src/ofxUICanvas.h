@@ -107,6 +107,8 @@ public:
         uniqueIDs = 0;         
         widgetSpacing = OFX_UI_GLOBAL_WIDGET_SPACING; 
         hasKeyBoard = false; 
+        
+        widgetFontSize = OFX_UI_FONT_MEDIUM;
     }
     
     void init(int w, int h, ofxUICanvas *sharedResources)
@@ -138,6 +140,8 @@ public:
         uniqueIDs = 0;         
         widgetSpacing = OFX_UI_GLOBAL_WIDGET_SPACING; 
         hasKeyBoard = false; 
+        
+        widgetFontSize = OFX_UI_FONT_MEDIUM;
     }    
 
     void saveSettings(string fileName)
@@ -1398,6 +1402,16 @@ public:
         return widget;
     }         
     
+    ofxUISpacer* addSpacer(float w, float h, float x = 0, float y = 0)
+    {
+        return (ofxUISpacer*)addWidgetPosition(new ofxUISpacer(w, h, x, y));
+    }
+    
+    ofxUILabel* addLabel(string _name, string _label = "", float w = 0, float h = 0, float x = 0, float y = 0)
+    {
+        return (ofxUILabel*)addWidgetPosition(new ofxUILabel(_name, _label, w, h, x, y, widgetFontSize));
+    }
+    
     void resetPlacer()
     {
         lastAdded = NULL; 
@@ -1422,6 +1436,11 @@ public:
 				label->setFont(font_small); 					
 				break; 					
 		}		
+	}
+	
+	void setWidgetFontSize(int _size)
+	{
+	    widgetFontSize = _size;
 	}
 	
 	void triggerEvent(ofxUIWidget *child)
@@ -1579,6 +1598,8 @@ protected:
     
     string fontName;
 
+    int widgetFontSize;
+    
     //Easy Font setting contributed from Colin Duffy (colin@tomorrowevening.com)    
     bool updateFont(ofxWidgetFontType _kind, string filename, int fontsize, bool _bAntiAliased=true, bool _bFullCharacterSet=false, bool makeContours=false, float simplifyAmt=0.3, int dpi=0) {
         bool success = false;
