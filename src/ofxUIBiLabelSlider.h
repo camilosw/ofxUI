@@ -85,13 +85,13 @@ public:
 		
 		value = ofMap(value, min, max, 0.0, 1.0, true); 
         
-        label = new ofxUILabel(padding,h*.5,(name+" LABEL"), name, _size); 	
+        label = new ofxUILabel((name+" LABEL"), name, 0, 0, padding, h * .5, _size);
         label->setDrawBack(true);        
 		label->setParent(label); 
 		label->setRectParent(rect); 	
         label->setEmbedded(true);        
 
-        rlabel = new ofxUILabel(padding,h*.5,(name+" LABEL"), rightLabel, _size); 	
+        rlabel = new ofxUILabel((name+" LABEL"), name, 0, 0, padding, h * .5, _size);
         rlabel->setDrawBack(true);        
 		rlabel->setParent(rlabel); 
 		rlabel->setRectParent(rect); 	

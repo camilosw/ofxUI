@@ -58,7 +58,7 @@ public:
 		paddedRect = new ofxUIRectangle(-padding, -padding, w+padding*2.0, h+padding*2.0);
 		paddedRect->setParent(rect); 
         
-		label = new ofxUILabel(w+padding*2.0,0, (name+" LABEL"), name, _size); 
+		label = new ofxUILabel((name+" LABEL"), name, 0, 0, w+padding*2.0, 0, _size); 
 		label->setParent(label); 
 		label->setRectParent(rect); 
         label->setEmbedded(true);		

@@ -87,7 +87,8 @@ public:
 			value = 0; 
 		}
 		
-		label = new ofxUILabel(0,h+padding,(name+" LABEL"), (name + ": " + ofToString(getScaledValue().x,2) + ", " + ofToString(getScaledValue().y,2)), OFX_UI_FONT_SMALL); 		
+		label = new ofxUILabel((name+" LABEL"), (name + ": " + ofToString(getScaledValue().x,2) + ", " + ofToString(getScaledValue().y,2)), 
+                                0, 0, 0, h + padding, OFX_UI_FONT_SMALL); 		
 		label->setParent(label); 
 		label->setRectParent(rect);         
         label->setEmbedded(true);

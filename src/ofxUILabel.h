@@ -30,77 +30,19 @@
 class ofxUILabel : public ofxUIWidget
 {
 public:    
-    ofxUILabel()
+    ofxUILabel() {}
+    
+    ofxUILabel(string _name, string _label = "", float w = 0, float h = 0, float x = 0, float y = 0, int _size = OFX_UI_FONT_MEDIUM)
     {
+        init(_name, _label, w, h, x, y);
+    }
+    
+    ofxUILabel* init(string _name, string _label = "", float w = 0, float h = 0, float x = 0, float y = 0, int _size = OFX_UI_FONT_MEDIUM)
+    {
+        rect = new ofxUIRectangle(x,y,w,h);
+        _label = _label.empty() ? _name : _label;
+        autoSize = w == 0;
         
-    }
-    
-    ofxUILabel(float x, float y, string _name, string _label, int _size)
-    {
-        rect = new ofxUIRectangle(x,y,0,0); 
-        init(_name, _label, _size); 		
-        autoSize = true;
-    }
-
-    ofxUILabel(float x, float y, string _name, int _size)
-    {
-        rect = new ofxUIRectangle(x,y,0,0); 
-        init(_name, _name, _size); 		
-        autoSize = true;
-    }
-
-    ofxUILabel(string _name, string _label, int _size)
-    {
-        rect = new ofxUIRectangle(0,0,0,0); 
-        init(_name, _label, _size); 		
-        autoSize = true;        
-    }	
-
-    ofxUILabel(string _name, int _size)
-    {
-        rect = new ofxUIRectangle(0,0,0,0); 
-        init(_name, _name, _size); 		
-        autoSize = true;
-    }   
-    
-    ofxUILabel(float x, float y, float w, string _name, string _label, int _size)
-    {
-        rect = new ofxUIRectangle(x,y,w,0); 
-        init(_name, _label, _size); 		
-        autoSize = false;
-    }
-    
-    ofxUILabel(float x, float y, float w, string _name, int _size)
-    {
-        rect = new ofxUIRectangle(x,y,w,0); 
-        init(_name, _name, _size); 		
-        autoSize = false;
-    }
-    
-    ofxUILabel(float w, string _name, string _label, int _size)
-    {
-        rect = new ofxUIRectangle(0,0,w,0); 
-        init(_name, _label, _size); 		
-        autoSize = false;        
-    }	
-    
-    ofxUILabel(float w, string _name, int _size)
-    {
-        rect = new ofxUIRectangle(0,0,w,0); 
-        init(_name, _name, _size); 		
-        autoSize = false;
-    }   
-
-    ofxUILabel(float w, string _name, int _size, float h)
-    {
-        rect = new ofxUIRectangle(0,0,w,h); 
-        init(_name, _name, _size); 		
-        autoSize = false;
-    }   
-    
-
-    void init(string _name, string _label, int _size)
-    {
 		name = _name;
 		kind = OFX_UI_WIDGET_LABEL; 
 		label = _label; 		 				
@@ -111,6 +53,8 @@ public:
         draw_fill = true; 
 		paddedRect = new ofxUIRectangle(-padding, -padding, padding*2.0, padding*2.0);
 		paddedRect->setParent(rect); 
+		
+		return this;
     }
     
     void drawBack()

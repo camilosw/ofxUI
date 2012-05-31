@@ -30,11 +30,13 @@
 class ofxUIFPSSlider : public ofxUISlider
 {
 public:        
-    ofxUIFPSSlider(float x, float y, float w, float h, float _min, float _max, float _value, string _name) : ofxUISlider(x, y, w, h, _min, _max, _value, _name)
+    ofxUIFPSSlider(float x, float y, float w, float h, float _min, float _max, float _value, string _name) 
+        : ofxUISlider(_name, _min, _max, _value, w, h, x, y)
     {
     }
     
-    ofxUIFPSSlider(float w, float h, float _min, float _max, float _value, string _name) : ofxUISlider(w, h, _min, _max, _value, _name)
+    ofxUIFPSSlider(float w, float h, float _min, float _max, float _value, string _name) 
+        : ofxUISlider(_name, _min, _max, _value, w, h)
     {
         
     }    

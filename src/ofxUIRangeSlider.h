@@ -91,11 +91,12 @@ public:
 		
 		if(kind == OFX_UI_WIDGET_RSLIDER_H)
 		{
-			label = new ofxUILabel(0,h+padding,(name+" LABEL"), (name + ": " + ofToString(getScaledValueLow(),2) + " " + ofToString(getScaledValueHigh(),2)), OFX_UI_FONT_SMALL); 
+			label = new ofxUILabel((name+" LABEL"), (name + ": " + ofToString(getScaledValueLow(),2) + " " + ofToString(getScaledValueHigh(),2)), 
+                                    0, 0, 0, h + padding, OFX_UI_FONT_SMALL);
 		}
 		else 
 		{
-			label = new ofxUILabel(0,h+padding,(name+" LABEL"), name, OFX_UI_FONT_SMALL); 	
+			label = new ofxUILabel((name+" LABEL"), name, 0, 0, 0, h + padding, OFX_UI_FONT_SMALL);
 		}
 		
 		label->setParent(label); 

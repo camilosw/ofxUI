@@ -70,7 +70,8 @@ public:
 		
 		value = ofMap(value, min, max, 0.0, 1.0, true); 
         
-        label = new ofxUILabel(0,w+padding,(name+" LABEL"), (name + ": " + ofToString(getScaledValue(),2)), OFX_UI_FONT_SMALL); 		
+        label = new ofxUILabel((name+" LABEL"), (name + ": " + ofToString(getScaledValue(),2)), 
+                               0, 0, 0,w + padding, OFX_UI_FONT_SMALL); 		
 		label->setParent(label); 
 		label->setRectParent(rect); 		
         label->setEmbedded(true);        

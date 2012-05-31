@@ -32,21 +32,15 @@ class ofxUISlider : public ofxUIWidgetWithLabel
 public:
     ofxUISlider() {}
     
-    ofxUISlider(float x, float y, float w, float h, float _min, float _max, float _value, string _name)
+    ofxUISlider(string _name, float _min, float _max, float _value, float w, float h, float x = 0, float y = 0)
     {
-        rect = new ofxUIRectangle(x,y,w,h); 
-        init(w, h, _min, _max, _value, _name); 		
+        init(_name, _min, _max, _value, w, h, x, y);
     }
     
-    ofxUISlider(float w, float h, float _min, float _max, float _value, string _name)
+    virtual ofxUISlider* init(string _name, float _min, float _max, float _value, float w, float h, float x = 0, float y = 0)
     {
-        rect = new ofxUIRectangle(0,0,w,h); 
-        init(w, h, _min, _max, _value, _name); 
-    }    
-    
-    virtual void init(float w, float h, float _min, float _max, float _value, string _name)
-    {
-        name = _name; 				
+        rect = new ofxUIRectangle(x,y,w,h);         
+        name = _name;
 		if(w > h)
 		{
 			kind = OFX_UI_WIDGET_SLIDER_H;  			
@@ -79,17 +73,19 @@ public:
         
 		if(kind == OFX_UI_WIDGET_SLIDER_H)
 		{
-			label = new ofxUILabel(0,h+padding,(name+" LABEL"), (name + ": " + ofToString(max,labelPrecision)), OFX_UI_FONT_SMALL); 
+			label = new ofxUILabel((name+" LABEL"), (name + ": " + ofToString(max,labelPrecision)), 0, 0, 0, h+padding, OFX_UI_FONT_SMALL); 
 		}
 		else 
 		{
-			label = new ofxUILabel(0,h+padding,(name+" LABEL"), name, OFX_UI_FONT_SMALL); 	
+			label = new ofxUILabel((name+" LABEL"), name, 0, 0, 0, h+padding, OFX_UI_FONT_SMALL);
 		}
         
 		label->setParent(label); 
 		label->setRectParent(rect); 
         label->setEmbedded(true);
         increment = 1.0;         
+        
+        return this;
     }
 
     virtual void setDrawPadding(bool _draw_padded_rect)

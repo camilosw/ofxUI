@@ -56,7 +56,7 @@ public:
 		clicked = false;                                            //the widget's value
         autoclear = true; 
 		
-		label = new ofxUILabel(padding*2.0,0,(name+" LABEL"), _size); 
+		label = new ofxUILabel((name+" LABEL"), "", 0, 0, padding*2.0, 0, _size); 
 		label->setParent(label); 
 		label->setRectParent(rect); 
         label->setEmbedded(true);
