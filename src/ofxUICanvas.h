@@ -1277,7 +1277,13 @@ public:
                 break; 
             case OFX_UI_ALIGN_RIGHT: 
                 widgetRect->x = rect->getWidth()-widgetRect->getWidth()-widgetSpacing; 
-                break;                     
+                break;                 	
+            case OFX_UI_ALIGN_TOP:
+                widgetRect->y = widgetSpacing;
+                break;
+            case OFX_UI_ALIGN_BOTTOM:
+                widgetRect->y = rect->getHeight()-widgetRect->getHeight()-widgetSpacing;
+                break;
         }                           
 		lastAdded = widget; 
 		return widget;
