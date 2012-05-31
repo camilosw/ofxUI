@@ -132,8 +132,16 @@ enum ofxWidgetColorType
 	OFX_UI_WIDGET_COLOR_FILL_HIGHLIGHT = 4, 
     OFX_UI_WIDGET_COLOR_PADDED = 5, 
 	OFX_UI_WIDGET_COLOR_PADDED_OUTLINE = 6 
-    
 }; 
+
+enum ofxWidgetPosition
+{
+    OFX_UI_WIDGET_POSITION_DOWN = 0,
+    OFX_UI_WIDGET_POSITION_UP = 1,
+    OFX_UI_WIDGET_POSITION_LEFT = 2,
+    OFX_UI_WIDGET_POSITION_RIGHT = 3
+};
+
 
 //#ifdef TARGET_ANDROID
 //#define OFX_UI_FONT_NAME "newmediafett.ttf"
