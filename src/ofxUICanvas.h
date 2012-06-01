@@ -109,6 +109,8 @@ public:
         hasKeyBoard = false; 
         
         widgetFontSize = OFX_UI_FONT_MEDIUM;
+        widgetPosition = OFX_UI_WIDGET_POSITION_DOWN;
+        widgetAlign = OFX_UI_ALIGN_LEFT;
     }
     
     void init(int w, int h, ofxUICanvas *sharedResources)
@@ -142,6 +144,8 @@ public:
         hasKeyBoard = false; 
         
         widgetFontSize = OFX_UI_FONT_MEDIUM;
+        widgetPosition = OFX_UI_WIDGET_POSITION_DOWN;
+        widgetAlign = OFX_UI_ALIGN_LEFT;
     }    
 
     void saveSettings(string fileName)
@@ -1402,14 +1406,24 @@ public:
         return widget;
     }         
     
+    ofxUIWidget* add(ofxUIWidget* widget)
+    {
+        return addWidgetPosition(widget, widgetPosition, widgetAlign);
+    }
+    
     ofxUISpacer* addSpacer(float w, float h, float x = 0, float y = 0)
     {
-        return (ofxUISpacer*)addWidgetPosition(new ofxUISpacer(w, h, x, y));
+        return (ofxUISpacer*)addWidgetPosition(new ofxUISpacer(w, h, x, y), widgetPosition, widgetAlign);
     }
     
     ofxUILabel* addLabel(string _name, string _label = "", float w = 0, float h = 0, float x = 0, float y = 0)
     {
-        return (ofxUILabel*)addWidgetPosition(new ofxUILabel(_name, _label, w, h, x, y, widgetFontSize));
+        return (ofxUILabel*)addWidgetPosition(new ofxUILabel(_name, _label, w, h, x, y, widgetFontSize), widgetPosition, widgetAlign);
+    }
+    
+    ofxUISlider* addSlider(string _name, float _min, float _max, float _value, float w, float h, float x = 0, float y = 0)
+    {
+        return (ofxUISlider*)addWidgetPosition(new ofxUISlider(_name, _min, _max, _value, w, h, x, y), widgetPosition, widgetAlign);
     }
     
     void resetPlacer()
@@ -1441,6 +1455,23 @@ public:
 	void setWidgetFontSize(int _size)
 	{
 	    widgetFontSize = _size;
+	}
+	
+	void setWidgetPosition(ofxWidgetPosition _position, int _align = -1)
+	{
+	    widgetPosition = _position;
+	    if (_align == -1) 
+	    {
+	        if (_position == OFX_UI_WIDGET_POSITION_DOWN ||
+                _position == OFX_UI_WIDGET_POSITION_UP) 
+            {
+                widgetAlign = OFX_UI_ALIGN_LEFT;
+            }
+            else
+            {
+                widgetAlign = OFX_UI_ALIGN_FREE;
+            }
+	    }
 	}
 	
 	void triggerEvent(ofxUIWidget *child)
@@ -1599,6 +1630,8 @@ protected:
     string fontName;
 
     int widgetFontSize;
+    ofxWidgetPosition widgetPosition;
+    ofxWidgetAlignment widgetAlign;
     
     //Easy Font setting contributed from Colin Duffy (colin@tomorrowevening.com)    
     bool updateFont(ofxWidgetFontType _kind, string filename, int fontsize, bool _bAntiAliased=true, bool _bFullCharacterSet=false, bool makeContours=false, float simplifyAmt=0.3, int dpi=0) {

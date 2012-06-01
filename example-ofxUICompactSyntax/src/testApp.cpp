@@ -80,7 +80,22 @@ void testApp::setGUI1() {
 	gui1->addSpacer(length-xInit, 2);
 	gui1->setWidgetFontSize(OFX_UI_FONT_MEDIUM);
 	gui1->addLabel("H SLIDERS");
-	gui1->addWidgetDown(red.init("RED", 0.0, 255.0, 233, length-xInit,dim));
-	gui1->addWidgetDown(green.init("GREEN", 0.0, 255.0, 27, length-xInit,dim));
-	gui1->addWidgetDown(blue.init("BLUE", 0.0, 255.0, 52, length-xInit,dim));
+	gui1->add(red.init("RED", 0.0, 255.0, 233, length-xInit,dim));
+	gui1->add(green.init("GREEN", 0.0, 255.0, 27, length-xInit,dim));
+	gui1->add(blue.init("BLUE", 0.0, 255.0, 52, length-xInit,dim));
+	
+    gui1->addSpacer(length-xInit, 2); 
+    gui1->addLabel("V SLIDERS"); 
+	gui1->addSlider("0", 0.0, 255.0, 150, dim, 160);
+	gui1->setWidgetPosition(OFX_UI_WIDGET_POSITION_RIGHT);
+	gui1->addSlider("1", 0.0, 255.0, 150, dim, 160);
+	gui1->addSlider("2", 0.0, 255.0, 150, dim, 160);
+	gui1->addSlider("3", 0.0, 255.0, 150, dim, 160);
+	gui1->addSlider("4", 0.0, 255.0, 150, dim, 160);
+	gui1->addSlider("5", 0.0, 255.0, 150, dim, 160);
+	gui1->addSlider("6", 0.0, 255.0, 150, dim, 160);
+	gui1->addSlider("7", 0.0, 255.0, 150, dim, 160);
+	gui1->addSlider("8", 0.0, 255.0, 150, dim, 160);
+	gui1->setWidgetPosition(OFX_UI_WIDGET_POSITION_DOWN);
+
 }
