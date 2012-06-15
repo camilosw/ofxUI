@@ -20,10 +20,14 @@ class testApp : public ofBaseApp{
 		void gotMessage(ofMessage msg);
 		
 		void setGUI1();
+		void setGUI2();
 		
 		ofxUICanvas *gui1;
+		ofxUICanvas *gui2;
 		
 		ofxUISlider red;
 		ofxUISlider green;
 		ofxUISlider blue;
+		
+		ofxUIButton drawGrid;
 };

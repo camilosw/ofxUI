@@ -32,17 +32,17 @@ class ofxUIToggle : public ofxUIButton
 public:
     ofxUIToggle() {}
     
-	ofxUIToggle(float x, float y, float w, float h, bool _value, string _name) : ofxUIButton(x,y,w,h,_value,_name)
+	ofxUIToggle(float x, float y, float w, float h, bool _value, string _name) : ofxUIButton(_name, _value, w, h, x, y)
     {
 		kind = OFX_UI_WIDGET_TOGGLE; 	        
     }
     
-	ofxUIToggle(float w, float h, bool _value, string _name) : ofxUIButton(w,h,_value, _name)
+	ofxUIToggle(float w, float h, bool _value, string _name) : ofxUIButton(_name, _value, w, h)
     {
 		kind = OFX_UI_WIDGET_TOGGLE; 	                
     }    
 
-	ofxUIToggle(float w, float h, bool _value, string _name, int _size) : ofxUIButton(w,h,_value, _name, _size)
+	ofxUIToggle(float w, float h, bool _value, string _name, int _size) : ofxUIButton(_name, _value, w, h, 0, 0, _size)
     {
 		kind = OFX_UI_WIDGET_TOGGLE; 	                
     }    

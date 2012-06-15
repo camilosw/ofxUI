@@ -6,8 +6,10 @@ void testApp::setup(){
     ofBackground(0); 
 
     setGUI1(); 
+    setGUI2(); 
     
     gui1->setDrawBack(false);
+    gui2->setDrawBack(false);
     
     ofBackground(red.getScaledValue(), green.getScaledValue(), blue.getScaledValue()); 
 }
@@ -97,5 +99,27 @@ void testApp::setGUI1() {
 	gui1->addSlider("7", 0.0, 255.0, 150, dim, 160);
 	gui1->addSlider("8", 0.0, 255.0, 150, dim, 160);
 	gui1->setWidgetPosition(OFX_UI_WIDGET_POSITION_DOWN);
+
+    gui1->addSpacer(length-xInit, 2); 
+	gui1->addLabel("BUTTONS");
+	//gui1->addButton("DRAW GRID", false, dim, dim);
+	gui1->add(drawGrid.init("DRAW GRID", false, dim, dim));
+}
+
+void testApp::setGUI2() {
+   	float dim = 16; 
+	float xInit = OFX_UI_GLOBAL_WIDGET_SPACING; 
+    float length = 255-xInit; 
+
+	gui2 = new ofxUICanvas(length+xInit+2, 0, length+xInit, ofGetHeight()); 
+	gui2->setWidgetFontSize(OFX_UI_FONT_LARGE);
+    gui2->addLabel("PANEL 2: ADVANCED"); 
+
+    gui2->addSpacer(length-xInit, 2);
+	gui2->setWidgetFontSize(OFX_UI_FONT_MEDIUM);
+    gui2->addLabel("LABEL TOGGLES");
+    //gui2->addWidgetDown(new ofxUILabelToggle(length-xInit, false, "LABEL TOGGLE", OFX_UI_FONT_MEDIUM));     
+    //gui2->addWidgetDown(new ofxUILabelToggle(false, "AUTOSIZE TOGGLE", OFX_UI_FONT_MEDIUM));     
+    //gui2->addWidgetDown(new ofxUILabelToggle(false, "MEDIUM TOGGLE", OFX_UI_FONT_MEDIUM));     
 
 }

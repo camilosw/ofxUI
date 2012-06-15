@@ -32,27 +32,15 @@ class ofxUIButton : public ofxUIWidgetWithLabel
 public:    
     ofxUIButton() {}
     
-    ofxUIButton(float x, float y, float w, float h, bool _value, string _name)
+    ofxUIButton(string _name, bool _value, float w, float h, float x = 0, float y = 0, int _size = OFX_UI_FONT_MEDIUM)
     {
-        rect = new ofxUIRectangle(x,y,w,h); 
-        init(w, h, _value, _name);
+        init(_name, _value, w, h, x, y, _size);
     }
     
-    ofxUIButton(float w, float h, bool _value, string _name)
+    virtual ofxUIButton* init(string _name, bool _value, float w, float h, float x = 0, float y = 0, int _size = OFX_UI_FONT_MEDIUM)
     {
-        rect = new ofxUIRectangle(0,0,w,h); 
-        init(w, h, _value, _name);        
-    }    
-
-    ofxUIButton(float w, float h, bool _value, string _name, int _size)
-    {
-        rect = new ofxUIRectangle(0,0,w,h); 
-        init(w, h, _value, _name, _size);        
-    }    
-
-    
-    virtual void init(float w, float h, bool _value, string _name, int _size = OFX_UI_FONT_SMALL)
-    {
+        rect = new ofxUIRectangle(x,y,w,h);
+        
 		name = _name; 		
 		kind = OFX_UI_WIDGET_BUTTON; 		
         
@@ -66,6 +54,8 @@ public:
         setValue(_value); 
         drawLabel = true;
         label->setVisible(drawLabel);      
+        
+        return this;
     }
         
     virtual void draw() 
