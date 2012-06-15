@@ -62,7 +62,7 @@ public:
 		for(int i = 0; i < names.size(); i++)
 		{
 			string tname = names[i]; 
-			ofxUIToggle *toggle = new ofxUIToggle(0,0, w, h, false, tname); 
+			ofxUIToggle *toggle = new ofxUIToggle(tname, false, w, h, 0, 0); 
 			toggles.push_back(toggle); 
 		}
         allowMultiple = false; 

@@ -37,7 +37,7 @@ public:
         init(_name, _value, w, h, x, y, _size);
     }
     
-    virtual ofxUIButton* init(string _name, bool _value, float w, float h, float x = 0, float y = 0, int _size = OFX_UI_FONT_MEDIUM)
+    ofxUIButton* init(string _name, bool _value, float w, float h, float x = 0, float y = 0, int _size = OFX_UI_FONT_MEDIUM)
     {
         rect = new ofxUIRectangle(x,y,w,h);
         

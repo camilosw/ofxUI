@@ -63,7 +63,7 @@ public:
         {
             for(int j = 0; j < cols; j++)
             {            
-                ofxUIToggle *toggle = new ofxUIToggle(pos.x,pos.y, w, h, false, (name+"("+ofToString(i,0)+","+ofToString(j,0)+")")); 
+                ofxUIToggle *toggle = new ofxUIToggle((name+"("+ofToString(i,0)+","+ofToString(j,0)+")"), false, w, h, pos.x, pos.y); 
                 toggle->setLabelVisible(false); 
                 toggles.push_back(toggle);                 
                 pos.x += w+padding; 

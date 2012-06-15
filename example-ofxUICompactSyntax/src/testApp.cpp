@@ -22,6 +22,19 @@ void testApp::update(){
 //--------------------------------------------------------------
 void testApp::draw(){
     ofBackground(red.getScaledValue(), green.getScaledValue(), blue.getScaledValue(), 255); 
+
+	ofPushStyle(); 
+	ofEnableBlendMode(OF_BLENDMODE_ALPHA); 
+
+	if(drawGridButton.getValue() || drawGridToggle.getValue())
+	{
+		ofSetColor(255, 255, 255, 25);	
+		drawGrid(8,8); 
+	}
+    
+	ofPopStyle(); 
+    
+    ofSetRectMode(OF_RECTMODE_CENTER); 
 }
 
 //--------------------------------------------------------------
@@ -69,6 +82,22 @@ void testApp::dragEvent(ofDragInfo dragInfo){
 
 }
 
+void testApp::drawGrid(float x, float y)
+{
+    float w = ofGetWidth(); 
+    float h = ofGetHeight(); 
+    
+    for(int i = 0; i < h; i+=y)
+    {
+        ofLine(0,i,w,i); 
+    }
+    
+    for(int j = 0; j < w; j+=x)
+    {
+        ofLine(j,0,j,h); 
+    }    
+}
+
 void testApp::setGUI1() {
 	float dim = 16; 
 	float xInit = OFX_UI_GLOBAL_WIDGET_SPACING; 
@@ -102,8 +131,9 @@ void testApp::setGUI1() {
 
     gui1->addSpacer(length-xInit, 2); 
 	gui1->addLabel("BUTTONS");
-	//gui1->addButton("DRAW GRID", false, dim, dim);
-	gui1->add(drawGrid.init("DRAW GRID", false, dim, dim));
+	gui1->add(drawGridButton.init("DRAW GRID", false, dim, dim));
+	gui1->addLabel("TOGGLES");
+	gui1->add(drawGridToggle.init("D_GRID", false, dim, dim));
 }
 
 void testApp::setGUI2() {

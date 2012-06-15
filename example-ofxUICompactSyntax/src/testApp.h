@@ -19,6 +19,8 @@ class testApp : public ofBaseApp{
 		void dragEvent(ofDragInfo dragInfo);
 		void gotMessage(ofMessage msg);
 		
+        void drawGrid(float x, float y); 
+
 		void setGUI1();
 		void setGUI2();
 		
@@ -29,5 +31,6 @@ class testApp : public ofBaseApp{
 		ofxUISlider green;
 		ofxUISlider blue;
 		
-		ofxUIButton drawGrid;
+		ofxUIButton drawGridButton;
+		ofxUIToggle drawGridToggle;
 };

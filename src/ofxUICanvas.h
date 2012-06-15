@@ -1431,6 +1431,11 @@ public:
         return (ofxUIButton*)addWidgetPosition(new ofxUIButton(_name, _value, w, h, x, y), widgetPosition, widgetAlign);
     }
     
+    ofxUIToggle* addToggle(string _name, bool _value, float w, float h, float x = 0, float y = 0)
+    {
+        return (ofxUIToggle*)addWidgetPosition(new ofxUIToggle(_name, _value, w, h, x, y), widgetPosition, widgetAlign);
+    }
+
     void resetPlacer()
     {
         lastAdded = NULL; 
