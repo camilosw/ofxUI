@@ -37,7 +37,7 @@ public:
         init(_name, _rangeX, _rangeY, _value, w, h, x, y);
     }	
 
-    void init(string _name, ofPoint _rangeX, ofPoint _rangeY, ofPoint _value, float w, float h, float x = 0, float y = 0)
+    ofxUI2DPad* init(string _name, ofPoint _rangeX, ofPoint _rangeY, ofPoint _value, float w, float h, float x = 0, float y = 0)
     {
         rect = new ofxUIRectangle(x,y,w,h); 
 		name = _name; 				
@@ -77,6 +77,7 @@ public:
 		label->setRectParent(rect);         
         label->setEmbedded(true);
         increment = 1.0; 
+        return this;
     }
     
     virtual void setDrawPadding(bool _draw_padded_rect)

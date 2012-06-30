@@ -37,7 +37,7 @@ public:
         init(_name, _min, _max, _value, w, x, y);
     }
     
-    void init(string _name, float _min, float _max, float _value, float w, float x = 0, float y = 0)
+    ofxUIRotarySlider* init(string _name, float _min, float _max, float _value, float w, float x = 0, float y = 0)
     {
         rect = new ofxUIRectangle(x,y,w,w); 
 		name = _name; 				
@@ -71,7 +71,9 @@ public:
 		label->setParent(label); 
 		label->setRectParent(rect); 		
         label->setEmbedded(true);        
-		increment = 0.01;         
+		increment = 0.01;       
+		
+		return this;  
     }
     
     virtual void setDrawPadding(bool _draw_padded_rect)
