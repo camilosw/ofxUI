@@ -31,20 +31,17 @@
 class ofxUIRadio : public ofxUIWidgetWithLabel
 {
 public:
-    ofxUIRadio(float x, float y, float w, float h, string _name, vector<string> names, int _orientation)
+    ofxUIRadio() {}
+    
+    ofxUIRadio(string _name, vector<string> names, int _orientation, float w, float h, float x = 0, float y = 0)
+    {
+        init(_name, names, _orientation, w, h, x, y);
+    }
+    
+    ofxUIRadio* init(string _name, vector<string> names, int _orientation, float w, float h, float x = 0, float y = 0)
     {
         rect = new ofxUIRectangle(x,y,w,h); 
-        init(w, h, _name, names, _orientation);         
-    }
 
-    ofxUIRadio(float w, float h, string _name, vector<string> names, int _orientation)
-    {
-        rect = new ofxUIRectangle(0,0,w,h); 
-        init(w, h, _name, names, _orientation);         
-    }    
-    
-    void init(float w, float h, string _name, vector<string> names, int _orientation)
-    {
 		name = _name; 		
 		kind = OFX_UI_WIDGET_RADIO; 		
         
@@ -66,6 +63,8 @@ public:
 			toggles.push_back(toggle); 
 		}
         allowMultiple = false; 
+        
+        return this;
     }
         
     virtual void setDrawPadding(bool _draw_padded_rect)

@@ -30,32 +30,16 @@
 class ofxUI2DPad : public ofxUIWidgetWithLabel
 {
 public:
-    ofxUI2DPad(float x, float y, float w, float h, ofPoint _value, string _name)
+    ofxUI2DPad() {}
+    
+    ofxUI2DPad(string _name, ofPoint _rangeX, ofPoint _rangeY, ofPoint _value, float w, float h, float x = 0, float y = 0)
     {
-        rect = new ofxUIRectangle(x,y,w,h); 
-        init(w, h, ofPoint(0,w), ofPoint(0,h), _value, _name);
+        init(_name, _rangeX, _rangeY, _value, w, h, x, y);
     }	
 
-    ofxUI2DPad(float x, float y, float w, float h, ofPoint _rangeX, ofPoint _rangeY, ofPoint _value, string _name)
+    void init(string _name, ofPoint _rangeX, ofPoint _rangeY, ofPoint _value, float w, float h, float x = 0, float y = 0)
     {
         rect = new ofxUIRectangle(x,y,w,h); 
-        init(w, h, _rangeX, _rangeY, _value, _name);
-    }	
-    
-    ofxUI2DPad(float w, float h, ofPoint _value, string _name)
-    {
-        rect = new ofxUIRectangle(0,0,w,h); 
-        init(w, h, ofPoint(0,w), ofPoint(0,h), _value, _name);
-    }
-	
-    ofxUI2DPad(float w, float h, ofPoint _rangeX, ofPoint _rangeY, ofPoint _value, string _name)
-    {
-        rect = new ofxUIRectangle(0,0,w,h); 
-        init(w, h, _rangeX, _rangeY, _value, _name);
-    }
-    
-    void init(float w, float h, ofPoint _rangeX, ofPoint _rangeY, ofPoint _value, string _name)
-    {
 		name = _name; 				
 		kind = OFX_UI_WIDGET_2DPAD; 		
 		paddedRect = new ofxUIRectangle(-padding, -padding, w+padding*2.0, h+padding);

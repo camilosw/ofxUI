@@ -30,20 +30,16 @@
 class ofxUIRotarySlider : public ofxUIWidgetWithLabel
 {
 public:    
-    ofxUIRotarySlider(float x, float y, float w, float _min, float _max, float _value, string _name)
+    ofxUIRotarySlider() {}
+    
+    ofxUIRotarySlider(string _name, float _min, float _max, float _value, float w, float x = 0, float y = 0) 
     {
-		rect = new ofxUIRectangle(x,y,w,w); 
-        init(w, _min, _max, _value, _name); 
+        init(_name, _min, _max, _value, w, x, y);
     }
     
-    ofxUIRotarySlider(float w, float _min, float _max, float _value, string _name)
+    void init(string _name, float _min, float _max, float _value, float w, float x = 0, float y = 0)
     {
-		rect = new ofxUIRectangle(0,0,w,w); 
-        init(w, _min, _max, _value, _name); 
-    }
-    
-    void init(float w, float _min, float _max, float _value, string _name)
-    {
+        rect = new ofxUIRectangle(x,y,w,w); 
 		name = _name; 				
         kind = OFX_UI_WIDGET_ROTARYSLIDER;  			
 		

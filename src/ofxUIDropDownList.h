@@ -30,36 +30,18 @@
 class ofxUIDropDownList : public ofxUIToggle
 {
 public:    
-    ofxUIDropDownList(float x, float y, float w, string _name, vector<string> items, int _size)
+    ofxUIDropDownList() {}
+    
+    ofxUIDropDownList(string _name, vector<string> items, float w = 0, float x = 0, float y = 0, int _size = OFX_UI_FONT_MEDIUM)
+    {
+        init(_name, items, w, x, y, _size);
+    }
+    
+    ofxUIDropDownList* init(string _name, vector<string> items, float w = 0, float x = 0, float y = 0, int _size = OFX_UI_FONT_MEDIUM)
     {
         rect = new ofxUIRectangle(x,y,w,0);                     
-        autoSize = false;         
-        init(_name, items, _size);         
-    }
-    
-    ofxUIDropDownList(float w, string _name, vector<string> items, int _size)
-    {
-        rect = new ofxUIRectangle(0,0,w,0);                     
-        autoSize = false;         
-        init(_name, items, _size);         
-    }    
-    
-    ofxUIDropDownList(float x, float y, string _name, vector<string> items, int _size)
-    {
-        rect = new ofxUIRectangle(x,y,0,0); 
-        autoSize = true; 
-        init(_name, items, _size);         
-    }
-    
-    ofxUIDropDownList(string _name, vector<string> items, int _size)
-    {
-        rect = new ofxUIRectangle(0,0,0,0); 
-        autoSize = true; 
-        init(_name, items, _size);         
-    }    
-    
-    void init(string _name, vector<string> items, int _size)
-    {
+        autoSize = w == 0;
+
 		name = _name; 		        
 		kind = OFX_UI_WIDGET_DROPDOWNLIST; 		        
 		paddedRect = new ofxUIRectangle(-padding, -padding, padding*2.0, padding*2.0);
@@ -75,6 +57,8 @@ public:
         allowMultiple = false; 
         initToggles(items, _size);         
         autoClose = false; 
+        
+        return this;
     }
 
     void clearToggles()
@@ -100,11 +84,11 @@ public:
         ofxUILabelToggle *ltoggle;         
         if(autoSize)
         {
-            ltoggle = new ofxUILabelToggle(0, yt, false, toggleName, size);                 
+            ltoggle = new ofxUILabelToggle(toggleName, false, 0, 0, 0, yt, size);
         }
         else
         {
-            ltoggle = new ofxUILabelToggle(0, yt, rect->getWidth(), rect->getHeight(), false, toggleName, size);                 
+            ltoggle = new ofxUILabelToggle(toggleName, false, rect->getWidth(), rect->getHeight(), 0, yt, size);                 
         }        
         ltoggle->setParent(this);
         ltoggle->getRect()->setParent(this->getRect());
@@ -185,11 +169,11 @@ public:
 			ofxUILabelToggle *ltoggle; 
             if(autoSize)
             {
-                ltoggle = new ofxUILabelToggle(0, ty, false, tname, _size);                 
+                ltoggle = new ofxUILabelToggle(tname, false, 0, 0, 0, ty, _size);
             }
             else
             {
-                ltoggle = new ofxUILabelToggle(0, ty, rect->getWidth(), false, tname, _size);                 
+                ltoggle = new ofxUILabelToggle(tname, false, rect->getWidth(), 0, 0, ty, _size);
             }
             ltoggle->setVisible(value); 
             ltoggle->setLabelVisible(value);             

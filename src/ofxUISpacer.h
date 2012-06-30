@@ -13,7 +13,7 @@ public:
         init(w, h, x, y);
     }
     
-    void init(float w, float h, float x = 0, float y = 0)
+    ofxUISpacer* init(float w, float h, float x = 0, float y = 0)
     {
         rect = new ofxUIRectangle(x,y,w,h);
         name = "OFX_UI_SPACER"; 				
@@ -24,6 +24,8 @@ public:
         
         draw_fill = true; 
         draw_back = false; 
+        
+        return this;
     }
 		
 	void setParent(ofxUIWidget *_parent)

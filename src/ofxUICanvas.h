@@ -1413,27 +1413,79 @@ public:
     
     ofxUISpacer* addSpacer(float w, float h, float x = 0, float y = 0)
     {
-        return (ofxUISpacer*)addWidgetPosition(new ofxUISpacer(w, h, x, y), widgetPosition, widgetAlign);
+        ofxUISpacer* widget = new ofxUISpacer(w, h, x, y);
+        addWidgetPosition(widget, widgetPosition, widgetAlign);
+        return widget;
     }
     
     ofxUILabel* addLabel(string _name, string _label = "", float w = 0, float h = 0, float x = 0, float y = 0)
     {
-        return (ofxUILabel*)addWidgetPosition(new ofxUILabel(_name, _label, w, h, x, y, widgetFontSize), widgetPosition, widgetAlign);
+        ofxUILabel* widget = new ofxUILabel(_name, _label, w, h, x, y, widgetFontSize);
+        addWidgetPosition(widget, widgetPosition, widgetAlign);
+        return widget;
     }
     
     ofxUISlider* addSlider(string _name, float _min, float _max, float _value, float w, float h, float x = 0, float y = 0)
     {
-        return (ofxUISlider*)addWidgetPosition(new ofxUISlider(_name, _min, _max, _value, w, h, x, y), widgetPosition, widgetAlign);
+        ofxUISlider* widget = new ofxUISlider(_name, _min, _max, _value, w, h, x, y);
+        addWidgetPosition(widget, widgetPosition, widgetAlign);
+        return widget;
+    }
+    
+    ofxUIRangeSlider* addRangeSlider(string _name, float _min, float _max, float _valuelow, float _valuehigh, float w, float h, float x = 0, float y = 0)
+    {
+        ofxUIRangeSlider* widget = new ofxUIRangeSlider(_name, _min, _max, _valuelow, _valuehigh, w, h, x, y);
+        addWidgetPosition(widget, widgetPosition, widgetAlign);
+        return widget;
+    }
+
+    ofxUIRotarySlider* addRotarySlider(string _name, float _min, float _max, float _value, float w, float x = 0, float y = 0)
+    {
+        ofxUIRotarySlider* widget = new ofxUIRotarySlider(_name, _min, _max, _value, w, x, y);
+        addWidgetPosition(widget, widgetPosition, widgetAlign);
+        return widget;
+    }
+    
+    ofxUI2DPad* add2DPad(string _name, ofPoint _rangeX, ofPoint _rangeY, ofPoint _value, float w, float h, float x = 0, float y = 0) 
+    {
+        ofxUI2DPad* widget = new ofxUI2DPad(_name, _rangeX, _rangeY, _value, w, h, x, y);
+        addWidgetPosition(widget, widgetPosition, widgetAlign);
+        return widget;
+    }
+
+    ofxUIRadio* addRadio(string _name, vector<string> names, int _orientation, float w, float h, float x = 0, float y = 0)
+    {
+        ofxUIRadio* widget = new ofxUIRadio(_name, names, _orientation, w, h, x, y);
+        addWidgetPosition(widget, widgetPosition, widgetAlign);
+        return widget;
     }
     
     ofxUIButton* addButton(string _name, bool _value, float w, float h, float x = 0, float y = 0)
     {
-        return (ofxUIButton*)addWidgetPosition(new ofxUIButton(_name, _value, w, h, x, y), widgetPosition, widgetAlign);
+        ofxUIButton* widget = new ofxUIButton(_name, _value, w, h, x, y, widgetFontSize);
+        addWidgetPosition(widget, widgetPosition, widgetAlign);
+        return widget;
     }
     
     ofxUIToggle* addToggle(string _name, bool _value, float w, float h, float x = 0, float y = 0)
     {
-        return (ofxUIToggle*)addWidgetPosition(new ofxUIToggle(_name, _value, w, h, x, y), widgetPosition, widgetAlign);
+        ofxUIToggle* widget = new ofxUIToggle(_name, _value, w, h, x, y, widgetFontSize);
+        addWidgetPosition(widget, widgetPosition, widgetAlign);
+        return widget;
+    }
+    
+    ofxUILabelToggle* addLabelToggle(string _name, bool _value, float w = 0, float h = 0, float x = 0, float y = 0)
+    {
+        ofxUILabelToggle* widget = new ofxUILabelToggle(_name, _value, w, h, x, y, widgetFontSize);
+        addWidgetPosition(widget, widgetPosition, widgetAlign);
+        return widget;
+    }
+    
+    ofxUIDropDownList* addDropDownList(string _name, vector<string> items, float w = 0, float x = 0, float y = 0)
+    {
+        ofxUIDropDownList* widget = new ofxUIDropDownList(_name, items, w, x, y, widgetFontSize);
+        addWidgetPosition(widget, widgetPosition, widgetAlign);
+        return widget;
     }
 
     void resetPlacer()

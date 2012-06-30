@@ -30,20 +30,16 @@
 class ofxUIRangeSlider : public ofxUIWidgetWithLabel
 {
 public:
-    ofxUIRangeSlider(float x, float y, float w, float h, float _min, float _max, float _valuelow, float _valuehigh, string _name)
-    {
-        rect = new ofxUIRectangle(x,y,w,h); 	        
-        init(w, h, _min, _max, _valuelow, _valuehigh, _name); 
-    }
+    ofxUIRangeSlider() {}
     
-    ofxUIRangeSlider(float w, float h, float _min, float _max, float _valuelow, float _valuehigh, string _name)
+    ofxUIRangeSlider(string _name, float _min, float _max, float _valuelow, float _valuehigh, float w, float h, float x = 0, float y = 0)
     {
-        rect = new ofxUIRectangle(0,0,w,h); 	        
-        init(w, h, _min, _max, _valuelow, _valuehigh, _name); 
+        init(_name, _min, _max, _valuelow, _valuehigh, w, h, x, y);
     }
-    
-    void init(float w, float h, float _min, float _max, float _valuelow, float _valuehigh, string _name)
+
+    void init(string _name, float _min, float _max, float _valuelow, float _valuehigh, float w, float h, float x = 0, float y = 0)
     {
+        rect = new ofxUIRectangle(x,y,w,h);
         name = _name; 				
 		if(w > h)
 		{

@@ -23,9 +23,11 @@ class testApp : public ofBaseApp{
 
 		void setGUI1();
 		void setGUI2();
+		void setGUI3();
 		
 		ofxUICanvas *gui1;
 		ofxUICanvas *gui2;
+		ofxUICanvas *gui3;
 		
 		ofxUISlider red;
 		ofxUISlider green;
